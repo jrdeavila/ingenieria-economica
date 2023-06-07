@@ -28,7 +28,7 @@ class FormTasaInteres extends FormRequest
             "per_tasa" => "required|numeric",
             "tiempo" => "required|numeric",
             "periodo_id" => "required|numeric|exists:tasa_tipos,id",
-            'tipo_tasa' => "required|bool"
+            'tipo_tasa' => "bool"
         ];
     }
 

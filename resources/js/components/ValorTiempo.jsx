@@ -1,12 +1,11 @@
 import { Box, Button, Container, FormControl, FormHelperText, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { ResponsiveContainer } from 'recharts';
 import { calcularValorFuturo as calcularValorTiempo } from '../services/tasaTipoService';
 import CartesianChart from './CartesianChart';
 import NumberFormatCustom from './NumberFormatCustom';
 import PercentSelect from './PercentSelect';
 
-const ValorFuturoForm = ({ tasaTipos }) => {
+const ValorTiempoForm = ({ tasaTipos }) => {
     const [valorPresente, setValorPresente] = useState(300000);
     const [tasaInteres, setTasaInteres] = useState(4);
     const [tiempoNumero, setTiempoNumero] = useState(2);
@@ -88,6 +87,7 @@ const ValorFuturoForm = ({ tasaTipos }) => {
                                 id="tipo-tasa-select"
                                 value={tipoTasa}
                                 onChange={(e) => setTipoTasa(e.target.value)}
+
                             >
                                 {["Compuesto", "Simple"].map((tipo) => (
                                     <MenuItem key={tipo} value={tipo}>{tipo}</MenuItem>
@@ -111,6 +111,7 @@ const ValorFuturoForm = ({ tasaTipos }) => {
                                 id="periodo-tasa-select"
                                 value={periodoTasa}
                                 onChange={(e) => setPeriodoTasa(e.target.value)}
+
                             >
                                 {tasaTipos.map((tasaTipo) => (
                                     <MenuItem key={tasaTipo.id} value={tasaTipo.id}>{tasaTipo.nombre}</MenuItem>
@@ -177,4 +178,4 @@ const ValorFuturoForm = ({ tasaTipos }) => {
     );
 };
 
-export default ValorFuturoForm;
+export default ValorTiempoForm;

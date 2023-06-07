@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FormTasaInteres;
 use App\Models\TasaTipo;
-use App\Utilities\TasaInteresUtility;
-use Illuminate\Http\Request;
 
 class CalcularValorTiempoController extends Controller
 {

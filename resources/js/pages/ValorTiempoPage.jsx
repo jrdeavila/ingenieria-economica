@@ -3,9 +3,9 @@ import tasaTiposService from "../services/tasaTipoService";
 import React from 'react';
 import { Box, CircularProgress } from "@mui/material";
 import BaseLayout from "../layouts/BaseLayout";
-import ValorFuturoForm from "../components/ValorFuturoForm";
+import ValorTiempoForm from "../components/ValorTiempo";
 
-export default function ValorFuturoPage() {
+export default function ValorTiempoPage() {
     const { value, loading, error, execute } = useAsync(tasaTiposService, []);
     return (
         <BaseLayout>
@@ -14,7 +14,7 @@ export default function ValorFuturoPage() {
             </Box>}
             {error && <p>Hubo un error</p>}
             {value && (
-                <ValorFuturoForm tasaTipos={value} />
+                <ValorTiempoForm tasaTipos={value} />
             )}
         </BaseLayout>
     );

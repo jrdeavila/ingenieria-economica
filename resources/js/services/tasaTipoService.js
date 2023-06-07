@@ -30,3 +30,11 @@ export async function calcularValorFuturo(data, tipo) {
     await new Promise(resolve => setTimeout(resolve, 1000));
     return valorFuturo;
 }
+
+
+export async function calcularAnualidades(data) {
+    let result = await axios.post("http://localhost/api/calcular-anualidades", data);
+    let anualidades = result.data;
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return anualidades;
+}

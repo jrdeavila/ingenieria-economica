@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnualidadesController;
 use App\Http\Controllers\CalcularTasaInteresController;
 use App\Http\Controllers\CalcularValorTiempoController;
 use App\Http\Controllers\TasaTipoController;
@@ -26,3 +27,4 @@ Route::get("/tasa-tipos", TasaTipoController::class);
 Route::post("/calcular-interes", CalcularTasaInteresController::class);
 Route::post("/calcular-valor-futuro", [CalcularValorTiempoController::class, "valorFuturo"]);
 Route::post("/calcular-valor-presente", [CalcularValorTiempoController::class, "valorPresente"]);
+Route::post("/calcular-anualidades", AnualidadesController::class);

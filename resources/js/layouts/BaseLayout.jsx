@@ -26,8 +26,8 @@ export default function BaseLayout({ children }) {
                     icon: <MoneyIcon />
                 },
                 {
-                    name: "Anualidades",
-                    link: "/anualidades",
+                    name: "Tabla de Amortizacion",
+                    link: "/amortizacion",
                     icon: <WorkIcon />
 
                 }
