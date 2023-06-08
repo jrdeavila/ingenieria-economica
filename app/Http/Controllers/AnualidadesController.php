@@ -82,7 +82,7 @@ class AnualidadesController extends Controller
 
     public function calcularAnualidadVP($capital, $tasa, $periodo): float
     {
-        $anualidad = $capital * abs((1 - ((1 + $tasa) ** -$periodo)) / $tasa);
+        $anualidad = $capital * ((((1 + $tasa) ** $periodo - 1)) / $tasa);
         return $anualidad;
     }
 }
