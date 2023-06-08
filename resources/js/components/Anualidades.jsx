@@ -1,16 +1,17 @@
-import { Box, Button, Container, FormControl, FormHelperText, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Box, Button, Container, FormControl, FormHelperText, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { calcularAmortizacion } from '../services/tasaTipoService';
-import AnualidadesTable from './AmortizacionTable';
+import { calcularAnualidades } from '../services/tasaTipoService';
 import NumberFormatCustom from './NumberFormatCustom';
 import PercentSelect from './PercentSelect';
+import { NumericFormat } from 'react-number-format';
 
-const AmortizacionForm = ({ tasaTipos }) => {
+const AnualidadesForm = ({ tasaTipos }) => {
     const [valorPresente, setValorPresente] = useState(300000);
     const [tasaInteres, setTasaInteres] = useState(4);
     const [tiempoNumero, setTiempoNumero] = useState(2);
     const [tiempoTipo, setTiempoTipo] = useState(0);
     const [periodoTasa, setPeriodoTasa] = useState(0);
+    const [tipoCalculo, setTipoCalculo] = useState("Valor Futuro")
 
     const [response, setResponse] = useState(null);
 
@@ -18,12 +19,6 @@ const AmortizacionForm = ({ tasaTipos }) => {
         setPeriodoTasa(tasaTipos[0].id);
         setTiempoTipo(tasaTipos[0].id);
     }, [tasaTipos])
-
-
-
-
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,21 +28,33 @@ const AmortizacionForm = ({ tasaTipos }) => {
             per_tasa: tasaInteres,
             tiempo: tiempoNumero,
             periodo_id: tiempoTipo,
+            tipo_tasa: tipoCalculo != "Valor Futuro",
         }
 
-        calcularAmortizacion(data).then((res) => {
+        calcularAnualidades(data).then((res) => {
             console.log(res);
             setResponse(res);
         });
     };
 
-    const formatCurrency = (value) => {
-        return `$${value.toLocaleString()}`;
-    };
-
     return (
         <Container>
             <form onSubmit={handleSubmit}>
+
+                <FormControl fullWidth margin="normal">
+                    <InputLabel id="tipo-calculo-label">¿Que vas a calcular?</InputLabel>
+                    <Select
+                        labelId="tipo-calculo-label"
+                        id="tipo-calculo-select"
+                        value={tipoCalculo}
+                        onChange={(e) => setTipoCalculo(e.target.value)}
+                    >
+                        {["Valor Futuro", "Valor Presente"].map((tipo) => (
+                            <MenuItem key={tipo} value={tipo}>{tipo}</MenuItem>
+                        ))}
+                    </Select>
+                    <FormHelperText>Calcular Valor Presente o Valor Futuro </FormHelperText>
+                </FormControl>
 
                 <TextField
                     label="Capital"
@@ -121,18 +128,29 @@ const AmortizacionForm = ({ tasaTipos }) => {
                 <Button variant="contained" type="submit">Calcular</Button>
             </form>
 
-            <Box height={200} width={1} />
-            <Box padding={10}>
+            <Box width={1} height={20} />
 
 
-                {
-                    response && (
-                        <AnualidadesTable data={response} />
-                    )
-                }
-            </Box>
+            {
+                response && (
+                    <>
+                        <Typography fontWeight="bold" variant="h6" component="h2">
+                            <Grid container justifyContent="space-between">
+                                <Grid item>
+                                    {`Anualidad a ${tipoCalculo}:`}
+                                </Grid>
+                                <Grid item >
+                                    <NumericFormat value={response.resultado} decimalScale={0} displayType='text' thousandSeparator prefix={'$ '} />
+                                </Grid>
+                            </Grid>
+                        </Typography>
+                    </>
+                )
+            }
+
+
         </Container >
     );
 };
 
-export default AmortizacionForm;
+export default AnualidadesForm;

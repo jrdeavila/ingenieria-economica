@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import TasaInteresPage from './pages/TasaInteresPage';
-import SnackBarContext from './contexts/SnackBarContext';
 import AxiosLayer from './components/AxiosLayer';
-import ValorTiempoPage from './pages/ValorTiempoPage';
+import SnackBarContext from './contexts/SnackBarContext';
 import AmortizacionPage from './pages/AmortizacionPage';
+import AnualidadesPage from './pages/AnualidadesPage';
+import TasaInteresPage from './pages/TasaInteresPage';
+import ValorTiempoPage from './pages/ValorTiempoPage';
 
 
 
@@ -29,6 +30,7 @@ function App() {
                         <Route exact path="/" element={<ValorTiempoPage />} />
                         <Route exact path="/tasas-interes" element={<TasaInteresPage />} />
                         <Route exact path="/amortizacion" element={<AmortizacionPage />} />
+                        <Route exact path="/anualidades" element={<AnualidadesPage />} />
                     </Routes>
                 </Router>
             </AxiosLayer>

@@ -3,9 +3,9 @@ import BaseLayout from "../layouts/BaseLayout";
 import React from "react";
 import tasaTiposService from "../services/tasaTipoService";
 import { Box, CircularProgress } from "@mui/material";
-import AnualidadesForm from "../components/Amortizacion";
+import AmortizacionForm from "../components/Amortizacion";
 
-export default function AnualidadesPage() {
+export default function AmortizacionPage() {
   const { value, loading, error, execute } = useAsync(tasaTiposService, []);
   return (
     <BaseLayout>
@@ -14,7 +14,7 @@ export default function AnualidadesPage() {
       </Box>}
       {error && <p>Hubo un error</p>}
       {value && (
-        <AnualidadesForm tasaTipos={value} />
+        <AmortizacionForm tasaTipos={value} />
       )}
     </BaseLayout>
   );

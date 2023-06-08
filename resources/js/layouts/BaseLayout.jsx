@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar";
-import React, { useContext, useState } from 'react';
+import MoneyIcon from '@mui/icons-material/Money';
 import PercentIcon from '@mui/icons-material/Percent';
 import WorkIcon from '@mui/icons-material/Work';
-import MoneyIcon from '@mui/icons-material/Money';
 import { Box, Snackbar } from "@mui/material";
 import MuiAlert from '@mui/material/Alert';
+import React, { useContext } from 'react';
+import Navbar from "../components/Navbar";
 import SnackBarContext from "../contexts/SnackBarContext";
 
 export default function BaseLayout({ children }) {
@@ -29,8 +29,12 @@ export default function BaseLayout({ children }) {
                     name: "Tabla de Amortizacion",
                     link: "/amortizacion",
                     icon: <WorkIcon />
-
-                }
+                },
+                {
+                    name: "Anualidades",
+                    link: "/anualidades",
+                    icon: <WorkIcon />
+                },
             ]} />
             <Box display="flex" justifyContent="center" paddingTop={5} height="100vh">
                 {children}

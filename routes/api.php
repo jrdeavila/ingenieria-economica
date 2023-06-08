@@ -27,4 +27,5 @@ Route::get("/tasa-tipos", TasaTipoController::class);
 Route::post("/calcular-interes", CalcularTasaInteresController::class);
 Route::post("/calcular-valor-futuro", [CalcularValorTiempoController::class, "valorFuturo"]);
 Route::post("/calcular-valor-presente", [CalcularValorTiempoController::class, "valorPresente"]);
-Route::post("/calcular-anualidades", AnualidadesController::class);
+Route::post("/calcular-amortizacion", [AnualidadesController::class, "amortizacion"]);
+Route::post("/calcular-anualidades", [AnualidadesController::class, "anualidades"]);

@@ -36,7 +36,6 @@ const TasasInteresForm = ({ tasaTipos }) => {
         }
 
         calcularInteres(data).then((res) => {
-            console.log(res);
             setResponse(res);
         });
 
@@ -155,18 +154,6 @@ const TasasInteresForm = ({ tasaTipos }) => {
 
                         <Box height={20} width={1} />
                     </Typography>
-                    <Grid container spacing={2} maxWidth={150}>
-                        <Grid item xs="4" >
-                            <Typography variant="h6" fontWeight="bold">{response["per-tasa-ini"].toFixed(1)}%</Typography>
-                        </Grid>
-                        <Grid item xs={4} paddingLeft={20}>
-                            <Typography variant='h6' textAlign="center" fontWeight="bold">{"->"}</Typography>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Typography variant="h6" fontWeight="bold">{response["per-tasa-abs"].toFixed(1)}%</Typography>
-                        </Grid>
-                    </Grid>
-
                 </>
 
 
